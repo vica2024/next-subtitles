@@ -1,2 +1,2 @@
-LICENSE_EN.md  # 英文版
-LICENSE_ZH.md  # 中文版
+- [License (English)](LICENSE_EN.md)
+- [许可协议 (中文)](LICENSE_ZH.md)
