@@ -41,7 +41,6 @@ export default function Pages() {
                      </div>
                    </div>
                  </div>
-
                </div>
               </div>
           </div>
