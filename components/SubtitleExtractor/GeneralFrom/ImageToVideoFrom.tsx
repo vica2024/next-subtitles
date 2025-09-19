@@ -31,7 +31,7 @@ const ImageToVideoFrom: React.FC<ChildProps> = function ({ onChange }) {
                 setErr("解析完成，但没找到字幕。确认字幕已应用到时间线，或改用含字幕的 draft_content.json。");
             }
             setCues(found);
-        } catch (e: any) {
+        } catch (e:any) {
             setErr(`解析失败：${e?.message || e}`);
         }
     };
