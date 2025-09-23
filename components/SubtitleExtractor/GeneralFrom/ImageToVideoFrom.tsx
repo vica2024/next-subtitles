@@ -31,11 +31,7 @@ const ImageToVideoFrom: React.FC<ChildProps> = function ({ onChange }) {
                 setErr("解析完成，但没找到字幕。确认字幕已应用到时间线，或改用含字幕的 draft_content.json。");
             }
             setCues(found);
-<<<<<<< HEAD
-        } catch (e:any) {
-=======
         } catch (e: any) {
->>>>>>> develop
             setErr(`解析失败：${e?.message || e}`);
         }
     };
@@ -80,19 +76,11 @@ const ImageToVideoFrom: React.FC<ChildProps> = function ({ onChange }) {
                                 </code>
 
                                 <Link
-<<<<<<< HEAD
-                                    href="https://biyaoyun.com/how-to-save-subtitles-generated-by-capcut-as-srt-files.html"
-                                    target="_blank"
-                                    className="mt-2 inline-block text-sm text-blue-600 hover:underline"
-                                >
-                                    找不到目录？点这里查看教程 →
-=======
                                     href=""
                                     target="_blank"
                                     className="mt-2 inline-block text-sm text-blue-600 hover:underline"
                                 >
                                     If you can't find the directory? Please to click here to view the tutorial →
->>>>>>> develop
                                 </Link>
                             </div>
 
