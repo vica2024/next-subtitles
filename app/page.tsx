@@ -1,6 +1,6 @@
 "use client";
-import React, { use } from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+import Footer from "@/components/SubtitleExtractor/Footer";
 import Sidebar from "@/components/SubtitleExtractor/Sidebar/Sidebar";
 import PageHeader  from "@/components/SubtitleExtractor/PageHeader/PageHeader";
 import ImageToVideoFrom from "@/components/SubtitleExtractor/GeneralFrom/ImageToVideoFrom";
@@ -43,6 +43,7 @@ export default function Pages() {
                  </div>
 
                </div>
+               <Footer />
               </div>
           </div>
         </div>

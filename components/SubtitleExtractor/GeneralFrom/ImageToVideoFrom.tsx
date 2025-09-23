@@ -76,11 +76,11 @@ const ImageToVideoFrom: React.FC<ChildProps> = function ({ onChange }) {
                                 </code>
 
                                 <Link
-                                    href="https://biyaoyun.com/how-to-save-subtitles-generated-by-capcut-as-srt-files.html"
+                                    href=""
                                     target="_blank"
                                     className="mt-2 inline-block text-sm text-blue-600 hover:underline"
                                 >
-                                    找不到目录？点这里查看教程 →
+                                    If you can't find the directory? Please to click here to view the tutorial →
                                 </Link>
                             </div>
 
