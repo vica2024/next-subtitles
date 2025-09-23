@@ -6,23 +6,24 @@ interface SubtitlesProps {
     fileName: string;
 }
 
-const ImageToVideoPreview: React.FC<SubtitlesProps> = ({ subtitles,fileName }) => {
+const ImageToVideoPreview: React.FC<SubtitlesProps> = ({ subtitles, fileName }) => {
 
+    const [saveName, setsaveName] = React.useState("");
     const [cue, setCue] = React.useState("");
     const [name, setName] = React.useState("");
     React.useEffect(() => {
         setCue(subtitles);
         setName(fileName);
-    }, [subtitles,fileName]);
+    }, [subtitles, fileName]);
 
     function downloadSrt() {
         const content = cue || "# no subtitles found\n";
         const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
-        const base = name.replace(/\.[^.]+$/, "");
+        const base = saveName.replace(/\.[^.]+$/, "");
         a.href = url;
-        a.download = (base || "capcut_subtitles") + ".srt";
+        a.download = (base || "subtitle") + ".srt";
         document.body.appendChild(a);
         a.click();
         a.remove();
@@ -35,6 +36,16 @@ const ImageToVideoPreview: React.FC<SubtitlesProps> = ({ subtitles,fileName }) =
                 <div className="flex flex-col space-y-1.5 flex-none p-3 lg:p-4">
                     <div className="flex items-center justify-between">
                         <h3 className="text-lg font-semibold text-purple-400">Preview</h3>
+                        <div>
+                            <input
+                                type="text"
+                                value={saveName}
+                                onChange={(e) => setsaveName(e.target.value)}
+                                placeholder="File Name"
+                                className="rounded border px-2 py-1 text-sm text-purple-400 bg-black/20 border-purple-700 focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500"
+                            />
+                            <span className="ml-2 text-sm text-gray-400">.srt</span>
+                        </div>
                         <div>
                             <button
                                 onClick={downloadSrt}

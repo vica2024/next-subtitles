@@ -15,8 +15,12 @@
     "class-variance-authority": "^0.7.1",
     "next": "15.5.3",
     "react": "19.1.0",
+<<<<<<< HEAD
     "react-dom": "19.1.0",
     "tailwind-merge": "^3.3.1"
+=======
+    "react-dom": "19.1.0"
+>>>>>>> develop
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -27,6 +31,10 @@
     "clsx": "ˆ1.2.1",
     "eslint": "^9",
     "eslint-config-next": "15.5.3",
+<<<<<<< HEAD
+=======
+    "tailwind-merge": "^2.15.0",
+>>>>>>> develop
     "tailwindcss": "^4",
     "typescript": "^5"
   }

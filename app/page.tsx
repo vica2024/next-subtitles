@@ -1,6 +1,11 @@
 "use client";
+<<<<<<< HEAD
 import React, { use } from "react";
 import { useState } from "react";
+=======
+import React, { useState } from "react";
+import Footer from "@/components/SubtitleExtractor/Footer";
+>>>>>>> develop
 import Sidebar from "@/components/SubtitleExtractor/Sidebar/Sidebar";
 import PageHeader  from "@/components/SubtitleExtractor/PageHeader/PageHeader";
 import ImageToVideoFrom from "@/components/SubtitleExtractor/GeneralFrom/ImageToVideoFrom";
@@ -41,7 +46,13 @@ export default function Pages() {
                      </div>
                    </div>
                  </div>
+<<<<<<< HEAD
                </div>
+=======
+
+               </div>
+               <Footer />
+>>>>>>> develop
               </div>
           </div>
         </div>
