@@ -13,7 +13,6 @@ const ImageToVideoFrom: React.FC<ChildProps> = function ({ onChange }) {
     const [err, setErr] = useState("");
     const [fileName, setFileName] = useState("");
     const [cues, setCues] = useState<SrtCue[]>([]);
-    const srtText = useMemo(() => toSrt(cues), [cues]);
 
     const handleImageUpload = async (file: File) => {
 
@@ -80,7 +79,7 @@ const ImageToVideoFrom: React.FC<ChildProps> = function ({ onChange }) {
                                     target="_blank"
                                     className="mt-2 inline-block text-sm text-blue-600 hover:underline"
                                 >
-                                    If you can't find the directory? Please to click here to view the tutorial →
+                                    If you Don&apos;t find the directory? Please to click here to view the tutorial →
                                 </Link>
                             </div>
 
