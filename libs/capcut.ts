@@ -1,12 +1,26 @@
 // libs/capcut.ts
 export type SrtCue = { index: number; startUs: number; endUs: number; text: string };
 
-/** 把可能是 ms/us/ns 的时间统一成微秒 */
+/** 把可能是 s/ms/us/ns 的时间统一成微秒 */
 export function detectUnitToUs(value: number): number {
   if (!isFinite(value)) return 0;
-  if (value > 1e12) return value / 1e3; // ns -> us
-  if (value > 1e6) return value;        // already us
-  return value * 1000;                   // ms -> us
+  const v = Number(value);
+
+  // 特大：ns -> us
+  if (v >= 1e12) return Math.round(v / 1e3);
+
+  // 大：already us
+  if (v >= 1e9) return Math.round(v);
+
+  // 关键补丁：小数 + 数值不大，极像 "秒"
+  // 举例：868.566（14分28秒），0.233 等
+  const isFraction = Math.abs(v - Math.round(v)) > 1e-6;
+  if (v < 1e5 && isFraction) {
+    return Math.round(v * 1e6); // s -> us
+  }
+
+  // 其余：按 ms 推断
+  return Math.round(v * 1000); // ms -> us
 }
 
 /** 微秒 -> SRT 时间码 */
@@ -77,14 +91,38 @@ export function extractSubtitlesFromCapCutDraft(draft: any): SrtCue[] {
 
 /** cues 已按开始时间排好序后再传进来更稳 */
 export function toSrt(cues: SrtCue[], opts?: { startIndex?: number }): string {
-  const startIndex = opts?.startIndex ?? 1; // 你要从 2 开始就传 2
+  const startIndex = opts?.startIndex ?? 1;
   if (!cues.length) return "";
+
+  const safeGetText = (raw: string): string => {
+    const s = String(raw).trim();
+    if (!s) return "";
+    // 粗判：可能是 {"text":"..."} 或 {"ops":[...]} 这类
+    if ((s.startsWith("{") && s.endsWith("}")) || (s.startsWith("[") && s.endsWith("]"))) {
+      try {
+        const obj = JSON.parse(s);
+        if (obj && typeof obj === "object") {
+          if (typeof (obj as any).text === "string") return (obj as any).text;
+          // 兼容富文本结构（根据你草稿实际结构再扩展）
+          if (Array.isArray((obj as any).ops)) {
+            return (obj as any).ops.map((o: any) => o.insert ?? "").join("");
+          }
+        }
+      } catch {
+        // 不是合法 JSON，就当纯文本
+      }
+    }
+    return s;
+  };
+
   return (
-    cues.map((c, i) => {
+    cues
+      .map((c, i) => {
         const idx = startIndex + i;
-        const jsonT = JSON.parse(c.text);
-        return `${idx}\n${usToSrtTime(c.startUs)} --> ${usToSrtTime(c.endUs)}\n${jsonT.text}\n`;
+        const text = safeGetText(c.text);
+        return `${idx}\n${usToSrtTime(c.startUs)} --> ${usToSrtTime(c.endUs)}\n${text}\n`;
       })
       .join("\n") + "\n"
   );
 }
+

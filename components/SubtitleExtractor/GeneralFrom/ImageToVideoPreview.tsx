@@ -12,6 +12,7 @@ const ImageToVideoPreview: React.FC<SubtitlesProps> = ({ subtitles, fileName }) 
     const [cue, setCue] = React.useState("");
     React.useEffect(() => {
         setCue(subtitles);
+        
     }, [subtitles, fileName]);
 
     function downloadSrt() {
