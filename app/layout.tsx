@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { metadata } from './metadata';
+import Script from "next/script";
 
 export { metadata };
 
@@ -21,6 +22,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2781795191883170"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"  // 页面加载后再加载广告脚本
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
