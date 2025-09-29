@@ -20,14 +20,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+   const ADS_CLIENT = "ca-pub-2781795191883170"; 
   return (
     <html lang="en">
       <head>
+        {/* AdSense 全局脚本 */}
         <Script
+          id="adsbygoogle-init"
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2781795191883170"
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADS_CLIENT}`}
           crossOrigin="anonymous"
-          strategy="afterInteractive"  // 页面加载后再加载广告脚本
+          strategy="afterInteractive"
         />
       </head>
       <body
