@@ -1,7 +1,7 @@
 // src/app/metadata.ts
 
 import type { Metadata } from 'next'
-import { ALTERNATES } from "@/libs/setting";
+import { SITE_URL } from "@/libs/setting";
 
 export const metadata: Metadata = {
   title: {
@@ -12,18 +12,18 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
   alternates: {
-    canonical: ALTERNATES,       // 默认版本
+    canonical: SITE_URL,       // 默认版本
     languages: {
-      "en-US": ALTERNATES,    // 英文版本
-      "zh-CN": ALTERNATES,       // 中文版本
-      "x-default": ALTERNATES    // 默认指向
+      "en-US": SITE_URL,    // 英文版本
+      "zh-CN": SITE_URL,       // 中文版本
+      "x-default": SITE_URL    // 默认指向
     }
   },
 
   openGraph: {
     title: "CapCut Subtitle Extraction Tool / CapCut 提取字幕工具",
     description: "Extract subtitles from video or audio — download as SRT/VTT/TXT. / 从视频或音频中提取字幕 — 下载为 SRT/VTT/TXT。",
-    url: ALTERNATES,
+    url: SITE_URL,
     siteName: "CapCut Subtitle Extractor / 字幕提取器",
     images: [
       {
