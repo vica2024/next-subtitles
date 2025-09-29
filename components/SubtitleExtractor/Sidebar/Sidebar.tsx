@@ -9,7 +9,7 @@ export default function Sidebar() {
           <Link href="/" className="group mb-4 flex items-center transition-all duration-300">
             {/* Logo */}
             <span className="ml-2 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-xl font-bold text-transparent">
-             Niigelog.ai
+              Fast Caption
             </span>
           </Link>
         </div>
