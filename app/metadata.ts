@@ -1,6 +1,7 @@
 // src/app/metadata.ts
 
 import type { Metadata } from 'next'
+import { ALTERNATES } from "@/libs/setting";
 
 export const metadata: Metadata = {
   title: {
@@ -8,21 +9,21 @@ export const metadata: Metadata = {
     template: "%s | Subtitle Extractor / 字幕提取器"
   },
   description: "Upload video or audio files and extract subtitles automatically. Supports multiple formats. Fast, free, and easy to use. / 上传视频或音频文件，自动提取字幕，支持多种格式，快速、免费、易用。",
-  metadataBase: new URL("https://your-domain.com"),
+  metadataBase: new URL(SITE_URL),
 
   alternates: {
-    canonical: "https://your-domain.com",       // 默认版本
+    canonical: ALTERNATES,       // 默认版本
     languages: {
-      "en-US": "https://your-domain.com/en",    // 英文版本
-      "zh-CN": "https://your-domain.com",       // 中文版本
-      "x-default": "https://your-domain.com"    // 默认指向
+      "en-US": ALTERNATES,    // 英文版本
+      "zh-CN": ALTERNATES,       // 中文版本
+      "x-default": ALTERNATES    // 默认指向
     }
   },
 
   openGraph: {
     title: "CapCut Subtitle Extraction Tool / CapCut 提取字幕工具",
     description: "Extract subtitles from video or audio — download as SRT/VTT/TXT. / 从视频或音频中提取字幕 — 下载为 SRT/VTT/TXT。",
-    url: "https://your-domain.com",
+    url: ALTERNATES,
     siteName: "CapCut Subtitle Extractor / 字幕提取器",
     images: [
       {
